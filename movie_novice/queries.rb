@@ -27,11 +27,11 @@ def find_angelina
 end
 
 def top_titles
-  Movie.select('movies.id, movies.title').where('movies.score >= ?', 9.0)
+  Movie.select(:id, :title).where('movies.score >= ?', 9.0)
 end
 
 def star_wars
-  Movie.select('id, title, yr').where("title LIKE '%Star Wars%'")
+  Movie.select(:id, :title, :yr).where("title LIKE '%Star Wars%'")
 
 end
 
@@ -52,7 +52,7 @@ end
 def pulp_fiction_actors
   # practice using joins
   # display the id and name of all actors in the movie Pulp Fiction
-  Actor.select('actors.id, actors.name').joins(:movies).where("title = 'Pulp Fiction'")
+  Actor.select(:id, :name).joins(:movies).where("title = 'Pulp Fiction'")
 end
 
 def uma_movies
@@ -60,5 +60,5 @@ def uma_movies
   # display the id, title, and year of movies Uma Thurman has acted in
   # order them by ascending year
   # hint: use 'select', 'joins', 'where', and 'order'
-  Movie.select('movies.id, title, yr').joins(:actors).where("actors.name = 'Uma Thurman'").order('yr ASC')
+  Movie.select(:id, :title, :yr).joins(:actors).where("actors.name = 'Uma Thurman'").order('yr ASC')
 end
